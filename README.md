@@ -26,34 +26,51 @@ Cancer cell lines are cultures of cancer cells that have been taken from patient
 Antibody therapies are a disease treatment that utilizes antibodies ([Cancer.gov](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy)). Antibodies are proteins made by the immune system that bind to specific antigens. Antigens are any substance that causes an immune response against itself. 
 
 #### Monoclonal antibodies (mAb) vs Polyclonal antibodies (pAb)
-Monoclonal antibody (mAb) preparations are distinct from polyclonal antibody (pAb) preparations. mAb are a single antibody molecule made to target specific antigens, and they are produced by cloning: making identical copies of a single parent immune cell ([National Research Council](https://www.ncbi.nlm.nih.gov/books/NBK100188/)); "mono" clonal meanings one cloning. pAb are a cocktail consisting of a variety of types antibodies derived from multiple parental immune cells ([genscript.com](https://www.genscript.com/polyclonal_or_monoclonal.html#:~:text=In%20contrast%20to%20polyclonal%20antibodies,antigen%20and%20is%20extremely%20specific.)); "poly" clonal means multiple cloning. As of 2024, antibody therapies are synonymous with mAb therapies, there are no pAb therapies on the market (The Antibody Society), but that may change in the future (Wang et al. 2013).
+Monoclonal antibody (mAb) preparations are distinct from polyclonal antibody (pAb) preparations. "Mono" clonal means one cloning, thus mAb are a single antibody molecule made to target specific antigens, and they are produced by cloning a single parent, immune cell ([National Research Council](https://www.ncbi.nlm.nih.gov/books/NBK100188/)). Cloning is making identical copies of a cell. "Poly" clonal means multiple cloning thus, pAb are a mixture consisting of a variety of types antibodies derived from multiple parent, immune cells ([genscript.com](https://www.genscript.com/polyclonal_or_monoclonal.html#:~:text=In%20contrast%20to%20polyclonal%20antibodies,antigen%20and%20is%20extremely%20specific.)). As of 2024, antibody therapies are synonymous with mAb therapies, there are no pAb therapies on the market (The Antibody Society 2024), but that may change in the future (Wang et al. 2013).
 
 #### Antigen Specificity
-Most FDA approved mAb are mono-specific, meaning they recognize only a single epitope of an antigen, but some approved mAb's are di-specific (The Antibody Society). Poly-specific antibody research is promising (Runcie et al. 2018; [FDA article](https://www.fda.gov/drugs/spotlight-cder-science/bispecific-antibodies-area-research-and-clinical-applications)). 
+Most FDA approved mAb are mono-specific, meaning they recognize only a single epitope of an antigen, but some approved mAb's are di-specific (The Antibody Society 2024). Poly-specific antibody research is promising (Runcie et al. 2018; [FDA article](https://www.fda.gov/drugs/spotlight-cder-science/bispecific-antibodies-area-research-and-clinical-applications)). 
 
 #### Antibody Therapy Mechanisms of Action 
-- Some antibody therapies are immunotherapies, meaning they help improve the immune response against the disease by recruiting the immune system to the target. 
-- Others are used to deliver drugs to target molecules.
-- Some stop/affect some key function supporting the cancer cell growth. 
-- Some antibody therapies fit more than one of these mechanisms of action.
+1. Some antibody therapies are immunotherapies, meaning they help improve the immune response against the disease by recruiting the immune system to the target. 
+2. Others are used to deliver drugs to target molecules.
+3. Some stop/affect some key function supporting the cancer cell growth. 4. Some antibody therapies fit more than one of these mechanisms of action.
 
-See Cancer.gov [link 1](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy) and [link 2](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy/monoclonal-antibodies), and [mayoclinic.org](https://www.mayoclinic.org/diseases-conditions/cancer/in-depth/monoclonal-antibody/art-20047808).
+See Cancer.gov's [antibody therapy](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy) and [monoclonal antibodies](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy/monoclonal-antibodies), and [mayoclinic.org](https://www.mayoclinic.org/diseases-conditions/cancer/in-depth/monoclonal-antibody/art-20047808).
 
 #### Use in Cancer
-As of 2024, a large majority of antibody therapies on the market are for cancer treatment (The Antibody Society). Antibody therapies have become increasingly popular for treating cancer due to their increased specificity over small molecules via protein engineering (Shepard et al. 2017). Antibody therapies have less off target effects.
-
-[//]: # (Monoclonal antibody therapies are by far the most popular antibody therapy https://www.antibodysociety.org/resources/approved-antibodies/, as opposed to polyclonal or recombinant antibodies https://www.cusabio.com/c-21035.html#a03. mAb therapies are generated by identical immune cells that are clones from a single parent cell.)
+As of 2024, a large majority of antibody therapies on the market are for cancer treatment (The Antibody Society 2024). Antibody therapies have become increasingly popular for treating cancer due to their increased specificity over small molecules via protein engineering (Shepard et al. 2017). Antibody therapies have less off-target effects
 
 ### How does Trastuzumab work?
+HER2 is a proto-oncogene that encodes a transmembrane receptor protein that is structurally similar to the epidermal growth factor receptor (EGFR) protein (Herceptin 2024, see "Mechanism of Action" and "Description"). Proto-oncogenes are genes that are responsible for processes that prevent cancer, and become oncogenes when mutated (perpetuate cancer). Herceptin is the brand name of a drug using Trastuzumab as an active ingredient. Trastuzumab is a mAb that has been shown to preferentially inhibit proliferation of cells over-expressing HER2 (over normal cells) by mediating antibody-dependent cellular cytotoxicity (ADCC). ADCC is an immune response where an effector immune cell kills a target cell that has been identified by an antibody ([wiki](https://en.wikipedia.org/wiki/Antibody-dependent_cellular_cytotoxicity)); this means Trastuzumab uses mechanism of action 1 described above.
+
+HER2-positive breast and gastric cancers can be treated using Trastuzumab (Greenblatt & Khaddour 2024; Herceptin 2024, Section 14 "Clinical Studies").
 
 ### How does Bevacizumab work?
+Bevacizumab is a mAb that binds the signaling protein vascular endothelial growth factor (VEGF) then prevents VEGF to intended endothelial cell surface receptors Fl1-1 and KDR
+(Bevacizumab 2022, see "Mechanism of Action" and "Description"). VEGF binding its receptors causes endothelial cell proliferation and formation of new blood vessels according to angiogenesis models. Therefore, Bevacizumab uses mechanism of action 3 described above.
+
+Bevacizumab can be used to treat a variety of cancers, including: cervical cancer, metastatic colorectal cancer, non-squamous non-small cell lung cancer, ovarian, glioblastoma, and more
+(Gerriets & Kasi 2023; Bevacizumab 2022, Section 14 "Clinical Studies")
 
 ### Paraphrasing the KSQ
+The KSQ of this work is: how can we use open source, scRNA-seq data collected from a variety of cancer cell lines to determine the effectiveness of FDA approved antibody therapies Trastuzumab and Bevacizumab to treat other types of cancer the therapies have not yet been approved for?
 
 ### Remaining Questions
+- Where can we get "open source, scRNA-seq data collected from a variety of cancer cell lines"? CCLE?
+- What kind of cancers should I expect to behave like the ones treated by Trastuzumab and Bevacizumab? Perhaps cancers that have similar causal mechanisms to HER2 and/or VEGF?
+- What kind of (statistical) analysis on the scRNA-seq data will help determine that Trastuzumab and/or Bevacizumab might on a given cancer cell line? One sanity check is to make sure that the analysis shows that the cancers *we know they **are** effective on* are confirmed by our analysis (and cancers that we know they are not effective on).
 
 ## References
+Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf accessed from https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125085
+
+Gerriets V, Kasi A. Bevacizumab. [Updated 2023 Aug 28]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK482126/
+
+Greenblatt K, Khaddour K. Trastuzumab. [Updated 2024 Jun 22]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK532246/
+
 Haque, A., Engel, J., Teichmann, S. A., & Lönnberg, T. (2017). A practical guide to single-cell RNA-sequencing for biomedical research and clinical applications. Genome medicine, 9, 1-12. https://doi.org/10.1186/s13073-017-0467-4
+
+Herceptin [Package Insert]. (2024, June 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/103792s5354lbl.pdf accessed from https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103792
 
 Jovic, D., Liang, X., Zeng, H., Lin, L., Xu, F., & Luo, Y. (2022). Single‐cell RNA sequencing technologies and applications: A brief overview. Clinical and translational medicine, 12(3), e694. https://doi.org/10.1002/ctm2.694
 
@@ -68,3 +85,8 @@ Shepard, H. M., Phillips, G. L., Thanos, C. D., & Feldmann, M. (2017). Developme
 The Antibody Society. Therapeutic monoclonal antibodies approved or in review in the EU or US. (2024); https://www.antibodysociety.org/resources/approved-antibodies.
 
 Wang, X. Z., Coljee, V. W., & Maynard, J. A. (2013). Back to the future: recombinant polyclonal antibody therapeutics. Current opinion in chemical engineering, 2(4), 405-415. https://doi.org/10.1016/j.coche.2013.08.005
+
+# Miscellaneous Information
+
+## The 5 types of human antibodies
+See this [resource](https://ruo.mbl.co.jp/bio/e/support/method/antibody-isotype.html#:~:text=Human%20antibodies%20are%20classified%20into,with%20distinct%20characteristics%20and%20roles.&text=IgG%20is%20the%20most%20abundant,of%20human%20immunoglobulins%20(antibodies).)
