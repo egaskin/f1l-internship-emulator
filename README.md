@@ -17,16 +17,16 @@ Given a collection of cells, scRNA-seq is generally able to do the following for
 Cancer cell lines are cultures of cancer cells that have been taken from patients or animals and characterized based on many things such as: what part of the body their taken from, major malfunctioning/mutated pathway(s) and genes, malignancy, and more. Cancer cell lines are useful due to their ability to provide infinite biological material for *in vitro* experimentation (provided the right conditions are met) while mostly retaining their original genomic identity if the proper controls are in place (Mirabelli et al. 2019). Hence, they are one of the most common models for cancer drug development and testing ([CCLE](https://sites.broadinstitute.org/ccle/)).
 
 - For understanding basics of a particular cancer, try looking at Wiki and [Cancer.gov](https://www.cancer.gov/).
-- For understanding cancer cell lines from a pure data standpoint, try the Cancer Cell Line Encyclopedia, [CCLE](https://sites.broadinstitute.org/ccle/).
+- For understanding cancer cell lines from a purely data, try Cancer Cell Line Encyclopedia, [CCLE](https://sites.broadinstitute.org/ccle/).
 
 [//]: # (### How can cancer cell lines be used for cancer drug development?)
 
 ### What are antibody therapies, and how are they related to cancer treatment?
 
-Antibody therapies are a disease treatment that utilizes antibodies ([Cancer.gov](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy)). Antibodies are proteins made by the immune system that bind to specific antigens. Antigens are any substance that causes an immune response against itself. 
+Antibody therapies utilize antibodies to treat disease ([Cancer.gov](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy)). Antibodies are proteins made by the immune system that bind to specific antigens. Antigens are any substance that causes an immune response against itself. 
 
 #### Monoclonal antibodies (mAb) vs Polyclonal antibodies (pAb)
-Monoclonal antibody (mAb) preparations are distinct from polyclonal antibody (pAb) preparations. "Mono" clonal means one cloning, thus mAb are a single antibody molecule made to target specific antigens, and they are produced by cloning a single parent, immune cell ([National Research Council](https://www.ncbi.nlm.nih.gov/books/NBK100188/)). Cloning is making identical copies of a cell. "Poly" clonal means multiple cloning thus, pAb are a mixture consisting of a variety of types antibodies derived from multiple parent, immune cells ([genscript.com](https://www.genscript.com/polyclonal_or_monoclonal.html#:~:text=In%20contrast%20to%20polyclonal%20antibodies,antigen%20and%20is%20extremely%20specific.)). As of 2024, antibody therapies are synonymous with mAb therapies, there are no pAb therapies on the market (The Antibody Society 2024), but that may change in the future (Wang et al. 2013).
+Monoclonal antibody (mAb) preparations are distinct from polyclonal antibody (pAb) preparations. Cloning is making identical copies of a cell. "Mono" clonal means one cloning, thus mAb are many copies of a single antibody molecule made to target specific antigens, produced by cloning a single parent, immune cell ([National Research Council](https://www.ncbi.nlm.nih.gov/books/NBK100188/)). "Poly" clonal means multiple cloning thus, pAb are a mixture consisting of a variety of types antibodies derived from multiple parent, immune cells ([genscript.com](https://www.genscript.com/polyclonal_or_monoclonal.html#:~:text=In%20contrast%20to%20polyclonal%20antibodies,antigen%20and%20is%20extremely%20specific.)). As of 2024, antibody therapies are synonymous with mAb therapies, there are no pAb therapies on the market (The Antibody Society 2024), but that may change in the future (Wang et al. 2013).
 
 #### Antigen Specificity
 Most FDA approved mAb are mono-specific, meaning they recognize only a single epitope of an antigen, but some approved mAb's are di-specific (The Antibody Society 2024). Poly-specific antibody research is promising (Runcie et al. 2018; [FDA article](https://www.fda.gov/drugs/spotlight-cder-science/bispecific-antibodies-area-research-and-clinical-applications)). 
@@ -47,22 +47,23 @@ HER2 is a proto-oncogene that encodes a transmembrane receptor protein that is s
 HER2-positive breast and gastric cancers can be treated using Trastuzumab (Greenblatt & Khaddour 2024; Herceptin 2024, Section 14 "Clinical Studies").
 
 ### How does Bevacizumab work?
-Bevacizumab is a mAb that binds the signaling protein vascular endothelial growth factor (VEGF) then prevents VEGF to intended endothelial cell surface receptors Fl1-1 and KDR
+Bevacizumab is a mAb that binds the paracrine signaling protein vascular endothelial growth factor (VEGF) then prevents VEGF to intended endothelial cell surface receptors Fl1-1 and KDR
 (Bevacizumab 2022, see "Mechanism of Action" and "Description"). VEGF binding its receptors causes endothelial cell proliferation and formation of new blood vessels according to angiogenesis models. Therefore, Bevacizumab uses mechanism of action 3 described above.
 
 Bevacizumab can be used to treat a variety of cancers, including: cervical cancer, metastatic colorectal cancer, non-squamous non-small cell lung cancer, ovarian, glioblastoma, and more
 (Gerriets & Kasi 2023; Bevacizumab 2022, Section 14 "Clinical Studies")
 
 ### Paraphrasing the KSQ
-The KSQ of this work is: how can we use open source, scRNA-seq data collected from a variety of cancer cell lines to determine the effectiveness of FDA approved antibody therapies Trastuzumab and Bevacizumab to treat other types of cancer the therapies have not yet been approved for?
+- The KSQ of this work is: how can we use open source, scRNA-seq data collected from a variety of cancer cell lines to determine the effectiveness of FDA approved antibody therapies Trastuzumab and Bevacizumab to treat other types of cancer the therapies have not yet been approved? 
+- How can we use transcriptome data from different cancer cell types and knowledge of Trastuzumab and Bevacizumab mechanisms and molecular targets to identify other cancers that may be worth exploring as clinical targets?
 
 ### Remaining Questions
 - Where can we get "open source, scRNA-seq data collected from a variety of cancer cell lines"? CCLE?
-- What kind of cancers should I expect to behave like the ones treated by Trastuzumab and Bevacizumab? Perhaps cancers that have similar causal mechanisms to HER2 and/or VEGF?
+- What kind of cancers should I expect to behave like the ones treated by Trastuzumab and Bevacizumab? Obvious starting point: find cancers with VEGF and/or HER2 over-expression; perhaps cancers that have similar causal mechanisms to HER2 and/or VEGF? 
 - What kind of (statistical) analysis on the scRNA-seq data will help determine that Trastuzumab and/or Bevacizumab might on a given cancer cell line? One sanity check is to make sure that the analysis shows that the cancers *we know they **are** effective on* are confirmed by our analysis (and cancers that we know they are not effective on).
 
 ## References
-Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf accessed from https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=125085
+Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
 
 Gerriets V, Kasi A. Bevacizumab. [Updated 2023 Aug 28]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK482126/
 
@@ -70,7 +71,7 @@ Greenblatt K, Khaddour K. Trastuzumab. [Updated 2024 Jun 22]. In: StatPearls [In
 
 Haque, A., Engel, J., Teichmann, S. A., & Lönnberg, T. (2017). A practical guide to single-cell RNA-sequencing for biomedical research and clinical applications. Genome medicine, 9, 1-12. https://doi.org/10.1186/s13073-017-0467-4
 
-Herceptin [Package Insert]. (2024, June 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/103792s5354lbl.pdf accessed from https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=103792
+Herceptin [Package Insert]. (2024, June 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/103792s5354lbl.pdf
 
 Jovic, D., Liang, X., Zeng, H., Lin, L., Xu, F., & Luo, Y. (2022). Single‐cell RNA sequencing technologies and applications: A brief overview. Clinical and translational medicine, 12(3), e694. https://doi.org/10.1002/ctm2.694
 
@@ -90,3 +91,7 @@ Wang, X. Z., Coljee, V. W., & Maynard, J. A. (2013). Back to the future: recombi
 
 ## The 5 types of human antibodies
 See this [resource](https://ruo.mbl.co.jp/bio/e/support/method/antibody-isotype.html#:~:text=Human%20antibodies%20are%20classified%20into,with%20distinct%20characteristics%20and%20roles.&text=IgG%20is%20the%20most%20abundant,of%20human%20immunoglobulins%20(antibodies).)
+
+## Official FDA approved labels resource
+- https://labels.fda.gov/
+- to access drug labels specifically: link above > "Drugs" Tab > "Drugs@FDA"
