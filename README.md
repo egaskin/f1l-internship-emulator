@@ -56,11 +56,16 @@ Bevacizumab can be used to treat a variety of cancers, including: cervical cance
 ### Paraphrasing the KSQ
 - The KSQ of this work is: how can we use open source, scRNA-seq data collected from a variety of cancer cell lines to determine the effectiveness of FDA approved antibody therapies Trastuzumab and Bevacizumab to treat other types of cancer the therapies have not yet been approved? 
 - How can we use transcriptome data from different cancer cell types and knowledge of Trastuzumab and Bevacizumab mechanisms and molecular targets to identify other cancers that may be worth exploring as clinical targets?
+    - Given their mono-specificity and monoclonal nature, we are probably looking for single molecular targets rather than multiple at once (though some cancers may possess multiple)
 
 ### Remaining Questions
 - Where can we get "open source, scRNA-seq data collected from a variety of cancer cell lines"? CCLE?
-- What kind of cancers should I expect to behave like the ones treated by Trastuzumab and Bevacizumab? Obvious starting point: find cancers with VEGF and/or HER2 over-expression; perhaps cancers that have similar causal mechanisms to HER2 and/or VEGF? 
-- What kind of (statistical) analysis on the scRNA-seq data will help determine that Trastuzumab and/or Bevacizumab might on a given cancer cell line? One sanity check is to make sure that the analysis shows that the cancers *we know they **are** effective on* are confirmed by our analysis (and cancers that we know they are not effective on).
+- What kind of cancers should I expect to behave like the ones treated by Trastuzumab and Bevacizumab?
+    - Obvious starting point: find cancers with VEGF and/or HER2 over-expression. 
+    - Is it possible to find cancers with similar expression profiles to the cancers treated by Trastuzumab and Bevacizumab, but do not over-express VEGF or HER2?
+- Can we utilize knowledge about the monoclonal, mono-specific, and/or mechanistic (mechanism of action) nature of the drugs with scRNA-seq to match potential additional cancers with the drugs, or does that require some additional information (like incorporating antibody protein structure knowledge in molecular dynamic simulations)?
+- What kind of (statistical) analysis on the scRNA-seq data will help determine that Trastuzumab and/or Bevacizumab might on a given cancer cell line?
+    - One sanity check is to make sure that the analysis shows that the cancers *we know Trastuzumab and Bevacizumab **are** effective on* are **confirmed** by our analysis (and similarly for cancers that we know they are not effective on).
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
