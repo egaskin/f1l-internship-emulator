@@ -1,13 +1,13 @@
 # Memo
 ## Week 1: Overview
 
-Key scientific question (KSQ) (directly quoted from [F1L Internship Emulator Week 1](https://www.linkedin.com/pulse/week-1-f1l-internship-emulator-ksq-dean-lee-354ke/))
+Key scientific question (KSQ), quoted from [F1L Internship Emulator Week 1](https://www.linkedin.com/pulse/week-1-f1l-internship-emulator-ksq-dean-lee-354ke/):
 > Using available scRNA-seq data from cancer cell lines, how would you explore the use of the following FDA-approved antibody therapies in additional cancers?
 > - Trastuzumab: Targets HER2 and is used in the treatment of HER2-positive breast and gastric cancers.
 > - Bevacizumab: Targets VEGF and is used for a variety of cancers, including colorectal, lung, glioblastoma, breast, liver, and kidney cancer.
 
 ### What is single cell RNA-seq (scRNA-seq)?
-Given a collection of cells, scRNA-seq is generally able to do the following for each cell: sequence each captured transcript (mRNA) from the cell's transcriptome and associate those sequenced transcripts with that cell (Jovic et al. 2022). Some example applications of scRNA-seq include: understanding the diversity of gene expression cells within a sample/environment (sample heterogeneity), determining how cell behavior varies spatio-temporally (for example, different parts of a tumor responding to oxygen access or drug exposure), comparing expression patterns of cell types (for example, compare immune vs blood vs neuron), discovering rare individual cells in a population (for example, hyper-resistant cancer cells), and tracing lineages of cells (tracking line of parental cells to progenitor cell(s)) (Haque et al. 2017).
+Given a collection of cells, scRNA-seq is generally able to do the following for each cell: sequence each captured RNA transcript from the cell's transcriptome and associate those sequenced transcripts with that cell (Jovic et al. 2022). Some example applications of scRNA-seq include: understanding the diversity of gene expression cells within a sample/environment (sample heterogeneity), determining how cell behavior varies spatio-temporally (for example, different parts of a tumor responding to oxygen access or drug exposure), comparing expression patterns of cell types (for example, compare immune vs blood vs neuron), discovering rare individual cells in a population (for example, hyper-resistant cancer cells), and tracing lineages of cells (tracking line of parental cells to progenitor cell(s)) (Haque et al. 2017).
 
 
 [//]: # (COMMENTS IN MARKDOWN: https://stackoverflow.com/questions/4823468/comments-in-markdown)
@@ -67,6 +67,35 @@ Bevacizumab can be used to treat a variety of cancers, including: cervical cance
 - What kind of (statistical) analysis on the scRNA-seq data will help determine that Trastuzumab and/or Bevacizumab might on a given cancer cell line?
     - One sanity check is to make sure that the analysis shows that the cancers *we know Trastuzumab and Bevacizumab **are** effective on* are **confirmed** by our analysis (and similarly for cancers that we know they are not effective on).
 
+## Week 2: The Paper
+Details for this week can be found at [F1L Internship Emulator Week 2](https://www.linkedin.com/pulse/week-2-f1l-internship-emulator-paper-dean-lee-3crce/)
+
+### Summary
+See "notes.md" in "./data/kinker_2020" folder
+
+### Reflective Questions
+
+#### How did the authors handle the potential caveat of co-culturing cell lines before profiling by scRNA-seq? Why do you think that caveat was or was not adequately addressed?
+The caveat is that for the predefined pools from CCLE (but not the custom pool of HNSCC), the cells were co-cultured for 3 days before profiling by scRNA-seq. The concern is that this would give a false representation of the transcriptome of the cell lines since there would be multiple types of cancer present in a single tube for multiple days - which is generally not reflective of real tumors.
+
+The authors gave two answers to handle this caveat. 
+1. They established that heterogeneity patterns between cell lines in a pool were as similar as patterns between cell lines from different pools (they cite Supplementary Fig. 1b). Since the heterogeneity patterns showed consistent amounts of similarity to cells they were co-cultured with and cells they were not co-cultured with, the co-culturing likely had no effect on their expression. 
+2. The authors performed an experiment for six cell lines. For each, they prepared a 3 day co-culture and a 0-day co-culture then profiled each by scRNA-seq. The results showed a small effect on the average gene expression of each cell line, and more importantly the heterogeneity patterns within a cell line were very much the same between the two group (they cite Supplementary Fig. 1c–f).
+
+I think that they did adequately address this concern. Their first answer is a clever way to use data they already generated to try to address the concern, and at have sound logic at face-value. But, if this were given alone, I might be concerned that some confirmation bias is at play, since most of their pools had the 3d co-culturing maybe most of the co-cultures experienced an accidental change in expression - such that they all appear to have similar heterogeneity patterns - which may not be detectable/apparent since their experiment is not designed to measure co-culture effect. However, the authors avoid my concern by performing a reasonable experiment on a small subset of the cells that is designed to measure whether co-culture does or does not affect a cell line's expression profile.
+
+#### The authors identified discrete subpopulations of cells within a subset of individual cell lines (Fig. 2A-B). What might be the reason why some cell lines have these discrete subpopulations while others do not?
+One reason could be that cell some cell lines show largely continuous variation across cells, causing one big clustering of cells that makes identifying subpopulations very difficult (see Figure 2a, left/blue population - imagine a cell line where this was the only type of variation seen and there's no discrete subpopulation); conversely, if a cell line shows largely discontinuous variation at any point, this will result in one or more discrete populations. Another reason could be some cancer cell lines have less, unstable, genetic variation within them (perhaps due to the underlying mutation(s) driving the cancer), such that the cells end up in one relatively tight cluster; conversely, cell lines with more unstable genetic mutations will tend to accumulate mutations and are more likely to spawn rare mutants that show distinct variability in expression and thus have distinct subpopulations.
+
+#### What are Recurrent Heterogeneous Programs (RHPs) and how were they defined?
+RHPs are heterogeneity patterns that consistently varied both within a cell line, and across cell lines. Heterogeneity patterns are groups of genes that tend to vary together when comparing groups of cells against other groups of cell (a group would generally be one subpopulation vs another subpopulation of cells, or one cell line vs another cell line, or perhaps even one subpopulation of a cell line vs a subpopulation of a different cell line).
+
+RHPs
+
+#### How do the identified RHPs relate to in vivo programs of heterogeneity in tumors, and what evidence supports this relationship?
+
+#### Where can you download the scRNA-seq data as shown in Figure 1B?
+
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
 
@@ -79,6 +108,8 @@ Haque, A., Engel, J., Teichmann, S. A., & Lönnberg, T. (2017). A practical guid
 Herceptin [Package Insert]. (2024, June 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2024/103792s5354lbl.pdf
 
 Jovic, D., Liang, X., Zeng, H., Lin, L., Xu, F., & Luo, Y. (2022). Single‐cell RNA sequencing technologies and applications: A brief overview. Clinical and translational medicine, 12(3), e694. https://doi.org/10.1002/ctm2.694
+
+Kinker, G. S., Greenwald, A. C., Tal, R., Orlova, Z., Cuoco, M. S., McFarland, J. M., ... & Tirosh, I. (2020). Pan-cancer single-cell RNA-seq identifies recurring programs of cellular heterogeneity. Nature genetics, 52(11), 1208-1218. https://doi.org/10.1038/s41588-020-00726-6
 
 Mirabelli, P., Coppola, L., & Salvatore, M. (2019). Cancer cell lines are useful model systems for medical research. Cancers, 11(8), 1098. https://doi.org/10.3390/cancers11081098
 
@@ -100,3 +131,7 @@ See this [resource](https://ruo.mbl.co.jp/bio/e/support/method/antibody-isotype.
 ## Official FDA approved labels resource
 - https://labels.fda.gov/
 - to access drug labels specifically: link above > "Drugs" Tab > "Drugs@FDA"
+
+## Genome.gov, definition of a transcriptome
+- https://www.genome.gov/about-genomics/fact-sheets/Transcriptome-Fact-Sheet
+- transcriptome: complete collection of RNA transcripts within a cell, majority of which are mRNA, but may include other RNA types depending on experiment
