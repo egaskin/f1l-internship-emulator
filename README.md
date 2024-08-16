@@ -34,7 +34,8 @@ Most FDA approved mAb are mono-specific, meaning they recognize only a single ep
 #### Antibody Therapy Mechanisms of Action 
 1. Some antibody therapies are immunotherapies, meaning they help improve the immune response against the disease by recruiting the immune system to the target. 
 2. Others are used to deliver drugs to target molecules.
-3. Some stop/affect some key function supporting the cancer cell growth. 4. Some antibody therapies fit more than one of these mechanisms of action.
+3. Some stop/affect some key function supporting the cancer cell growth. 
+4. Some antibody therapies fit more than one of these mechanisms of action.
 
 See Cancer.gov's [antibody therapy](https://www.cancer.gov/publications/dictionaries/cancer-terms/def/antibody-therapy) and [monoclonal antibodies](https://www.cancer.gov/about-cancer/treatment/types/immunotherapy/monoclonal-antibodies), and [mayoclinic.org](https://www.mayoclinic.org/diseases-conditions/cancer/in-depth/monoclonal-antibody/art-20047808).
 
@@ -71,7 +72,23 @@ Bevacizumab can be used to treat a variety of cancers, including: cervical cance
 Details for this week can be found at [F1L Internship Emulator Week 2](https://www.linkedin.com/pulse/week-2-f1l-internship-emulator-paper-dean-lee-3crce/)
 
 ### Summary
-See "notes.md" in "./data/kinker_2020" folder
+
+#### What did they do?
+##### Figures 1-2
+They took various cell lines from CCLE, and performed scRNA-seq on them in pools (mixtures of cells from various cell lines). Then, they used the consensus of two methods to assign cells from the pools to their respective cell lines, and threw out ones that did not meet consensus or failed other QC requirements. Then, within each of the cell lines they performed dimesnional reduction then clustering to identify if the cell line had distinct subpopulations and, if so, how many subpopulations. If subpopulations were present, they explored them. Across all cell lines (regardless of subpopulation presence) they did various types of analyses to identify recurrent heterogeneous programs (RHPs) - RHPs are sets of genes that showed significant correlation and variation between cells within a cell line, and consistently varied across multiple cell line. Correlation defines heterogeneity patterns: groups of genes that tend to vary together when comparing groups of cells against other groups of cell (a group would generally be one subpopulation vs another subpopulation of cells, or one cell line vs another cell line, or perhaps even one subpopulation of a cell line vs a subpopulation of a different cell line).
+
+The authors then categorized RHPs based on whether they or not they were associated with cell cycle. They found 2 cell cycle RHPs, and 10 non-cell cycle RHPs. 
+
+##### Figures 3-7
+For multiple of the cancer cell lines, they performed further analysis by pooling real tumor cells with cell line cells then performing scRNA-seq on these to compare the expression profiles of the two. Most of the paper is devoted to exploring if RHPs *in vitro* (cancer cell lines) follow similar variation patterns *in vivo* (real tumors).
+
+[//]: # (various analyses on their expression profiles - hierarchical clusteri3ng, non-negative matrix factorization -)
+
+#### Why did they do it? (Kinker et al's goal)
+The authors set out to discern if cancer cell lines adequately capture the cellular heterogeneity observed in real tumors.
+
+#### What did they learn?
+Most of the results in the paper describe how the RHPs successfully reflect real intratumor heterogeneity (ITH). The authors argue that as cancer genetics focuses on mutations recurrent across cancers - since these mutations are proposed to drive cancer formation - so should cancer transcriptomics focus on RHPs across cancers - since these programs define cancer phenotypes.
 
 ### Reflective Questions
 
@@ -87,12 +104,13 @@ I think that they did adequately address this concern. Their first answer is a c
 #### The authors identified discrete subpopulations of cells within a subset of individual cell lines (Fig. 2A-B). What might be the reason why some cell lines have these discrete subpopulations while others do not?
 One reason could be that cell some cell lines show largely continuous variation across cells, causing one big clustering of cells that makes identifying subpopulations very difficult (see Figure 2a, left/blue population - imagine a cell line where this was the only type of variation seen and there's no discrete subpopulation); conversely, if a cell line shows largely discontinuous variation at any point, this will result in one or more discrete populations. Another reason could be some cancer cell lines have less, unstable, genetic variation within them (perhaps due to the underlying mutation(s) driving the cancer), such that the cells end up in one relatively tight cluster; conversely, cell lines with more unstable genetic mutations will tend to accumulate mutations and are more likely to spawn rare mutants that show distinct variability in expression and thus have distinct subpopulations.
 
-#### What are Recurrent Heterogeneous Programs (RHPs) and how were they defined?
-RHPs are heterogeneity patterns that consistently varied both within a cell line, and across cell lines. Heterogeneity patterns are groups of genes that tend to vary together when comparing groups of cells against other groups of cell (a group would generally be one subpopulation vs another subpopulation of cells, or one cell line vs another cell line, or perhaps even one subpopulation of a cell line vs a subpopulation of a different cell line).
+#### What are RHPs and how were they defined?
+See definition of RHPs in "What did they do?" above.
 
-RHPs
+RHPs were identified by using non-negative matrix factorization (NMF) the scRNA-seq data matrix associated with each cell line. The clusters can be obtained by querying the columns of H following NMF factorization for clustering (V=WH, see [Wiki](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization#Clustering_property)). Comparing clusters with similar genes across cell lines then taking the consensus of those comparisons revealed RHPs.
 
 #### How do the identified RHPs relate to in vivo programs of heterogeneity in tumors, and what evidence supports this relationship?
+For the most part, RHPs *in vitro* and intratumoral heterogeneity (ITH) programs *in vivo* appeared to be highly consistent with each other. That is, cancer cell lines RHPs were generally found to successfully recapitulate the heterogeneity found in real tumors. 
 
 #### Where can you download the scRNA-seq data as shown in Figure 1B?
 
@@ -125,6 +143,14 @@ Wang, X. Z., Coljee, V. W., & Maynard, J. A. (2013). Back to the future: recombi
 
 # Miscellaneous Information
 
+## Don't forget the resources on F1L's site!
+- 3Blue1Brown for linear algebra
+- Points of Significance for statistics
+- StatQuest!!! for statistics
+- STAT115 by Shirley Liu for an introduction to compbio
+- Best practices for scRNA-seq data analysis
+- Glittr a collection of Git repos with bioinformatics training material
+
 ## The 5 types of human antibodies
 See this [resource](https://ruo.mbl.co.jp/bio/e/support/method/antibody-isotype.html#:~:text=Human%20antibodies%20are%20classified%20into,with%20distinct%20characteristics%20and%20roles.&text=IgG%20is%20the%20most%20abundant,of%20human%20immunoglobulins%20(antibodies).)
 
@@ -135,3 +161,9 @@ See this [resource](https://ruo.mbl.co.jp/bio/e/support/method/antibody-isotype.
 ## Genome.gov, definition of a transcriptome
 - https://www.genome.gov/about-genomics/fact-sheets/Transcriptome-Fact-Sheet
 - transcriptome: complete collection of RNA transcripts within a cell, majority of which are mRNA, but may include other RNA types depending on experiment
+
+## Non-negative matrix factorization (NMF)
+- overview math, small example, and algorithms to find: https://www.youtube.com/watch?v=TFCgVWNd0mA
+
+## Cell cycle fact
+- https://www.sciencefacts.net/cell-cycle.html
