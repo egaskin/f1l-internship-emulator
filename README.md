@@ -82,7 +82,7 @@ The authors then categorized RHPs based on whether they or not they were associa
 ##### Figures 3-7
 For multiple of the cancer cell lines, they performed further analysis by pooling real tumor cells with cell line cells then performing scRNA-seq on these to compare the expression profiles of the two. Most of the paper is devoted to exploring if RHPs *in vitro* (cancer cell lines) follow similar variation patterns *in vivo* (real tumors).
 
-[//]: # (various analyses on their expression profiles - hierarchical clusteri3ng, non-negative matrix factorization -)
+[//]: # (various analyses on their expression profiles - hierarchical clustering, non-negative matrix factorization -)
 
 #### Why did they do it? (Kinker et al's goal)
 The authors set out to discern if cancer cell lines adequately capture the cellular heterogeneity observed in real tumors.
@@ -110,9 +110,14 @@ See definition of RHPs in "What did they do?" above.
 RHPs were identified by using non-negative matrix factorization (NMF) the scRNA-seq data matrix associated with each cell line. The clusters can be obtained by querying the columns of H following NMF factorization for clustering (V=WH, see [Wiki](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization#Clustering_property)). Comparing clusters with similar genes across cell lines then taking the consensus of those comparisons revealed RHPs.
 
 #### How do the identified RHPs relate to in vivo programs of heterogeneity in tumors, and what evidence supports this relationship?
-For the most part, RHPs *in vitro* and intratumoral heterogeneity (ITH) programs *in vivo* appeared to be highly consistent with each other. That is, cancer cell lines RHPs were generally found to successfully recapitulate the heterogeneity found in real tumors. 
+For the most part, RHPs *in vitro* and programs *in vivo* appeared to be highly consistent with each other. That is, cancer cell lines RHPs were generally found to successfully recapitulate the heterogeneity found in real tumors. The authors identified 12 RHPs in total - 2 cell cycle programs and 10 non-cell cycle programs. 
+
+For the 2 cell cycle RHPs, they found that the G2/M programs were consistent between cancer cell lines and real tumors, but G1/S programs showed some differences between *in vitro* (cell lines) and *in vivo* (real tumor) instances of those programs (see pg 1209). 
+
+For the 10 non-cell cycle programs, the programs labeled 9 and 10 were the only ones identified *in vitro* that did not have a corresponding *in vivo* program, which the authors propose might be a lack of *in vivo* data (see pg 1210). The authors surmised that 7 of the 10 *in vitro* RHPs showed significant similarity to the *in vivo* RHPs (they cite Fig. 4a, see pg 1210). This was based on similarity between *in vivo* RHP data and *in vitro* RHP data, some RHPs which were previously defined and others which the authors derived from available scRNA-seq data on real tumors. Additional verification was done for many of the RHPs by performing scRNA-seq on samples containing both real tumor cells and cancer cell line cells, which often resulted in indistinguishable expression patterns.
 
 #### Where can you download the scRNA-seq data as shown in Figure 1B?
+See the "Data availability" section. They give two links, one of which is a "Study" on CCLE: https://singlecell.broadinstitute.org/single_cell/study/SCP542/pan-cancer-cell-line-heterogeneity.
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
