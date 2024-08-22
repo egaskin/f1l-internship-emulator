@@ -107,7 +107,7 @@ One reason could be that cell some cell lines show largely continuous variation 
 #### What are RHPs and how were they defined?
 See definition of RHPs in "What did they do?" above.
 
-RHPs were identified by using non-negative matrix factorization (NMF) the scRNA-seq data matrix associated with each cell line. The clusters can be obtained by querying the columns of H following NMF factorization for clustering (V=WH, see [Wiki](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization#Clustering_property)). Comparing clusters with similar genes across cell lines then taking the consensus of those comparisons revealed RHPs.
+RHPs were identified by apply non-negative matrix factorization (NMF) to the scRNA-seq data matrix associated with each cell line. The clusters can be obtained by querying the columns of H following NMF factorization for clustering (V=WH, see [Wiki](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization#Clustering_property)). Comparing clusters with similar genes across cell lines then taking the consensus of those comparisons revealed RHPs.
 
 #### How do the identified RHPs relate to in vivo programs of heterogeneity in tumors, and what evidence supports this relationship?
 For the most part, RHPs *in vitro* and programs *in vivo* appeared to be highly consistent with each other. That is, cancer cell lines RHPs were generally found to successfully recapitulate the heterogeneity found in real tumors. The authors identified 12 RHPs in total - 2 cell cycle programs and 10 non-cell cycle programs. 
@@ -118,6 +118,17 @@ For the 10 non-cell cycle programs, the programs labeled 9 and 10 were the only 
 
 #### Where can you download the scRNA-seq data as shown in Figure 1B?
 See the "Data availability" section. They give two links, one of which is a "Study" on CCLE: https://singlecell.broadinstitute.org/single_cell/study/SCP542/pan-cancer-cell-line-heterogeneity.
+
+## Week 3: The Data
+
+### Notes to self
+1. Freshly installed WSL (to use Unix on Windows) with Ubuntu distribution: https://learn.microsoft.com/en-us/windows/wsl/tutorials/wsl-vscode
+2. Freshly installed Anaconda for Linux (Debian, x86 arch)
+    - https://freelearning.anaconda.cloud/get-started-with-anaconda
+        - except I did not go with the Anaconda Navigator GUI, I used the link below
+    - https://docs.anaconda.com/anaconda/install/linux/
+3. Downloaded data, see "Where can you download the scRNA-seq data as shown in Figure 1B?"
+4.  
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
