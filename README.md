@@ -128,7 +128,17 @@ See the "Data availability" section. They give two links, one of which is a "Stu
         - except I did not go with the Anaconda Navigator GUI, I used the link below
     - https://docs.anaconda.com/anaconda/install/linux/
 3. Downloaded data, see "Where can you download the scRNA-seq data as shown in Figure 1B?"
-4.  
+4. Followed Sanbomics guide to raw data processing, preprocessing, and analyzing scRNA-seq data and skimming relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html):
+    - Chapters 3-9 of sc-best-practices with [2024 scRNA-seq tutorial, part 1: Raw data processing](https://www.youtube.com/watch?v=cmOlCTGX4Ik)
+    - Chapters 10-12 of sc-best-practices with [2024 updated single-cell guide - Part 2: RNA Integration and annotation](https://www.youtube.com/watch?v=FqG_O12oWR4)
+    - PERHAPS LATER: [Complete single-cell RNAseq analysis walkthrough | Advanced introduction (2023 version)](https://www.youtube.com/watch?v=uvyG9yLuNSE)
+5. Created F1L emulator conda environment, activated then installed packages as specified in the file "./240703_kinker_explore.ipynb" by running the following commands in Bash shell:
+    ```bash
+    conda create --name 2024-F1L
+    conda install jupyter
+    conda install -c conda-forge scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib
+    ```
+6. 
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
