@@ -117,7 +117,7 @@ For the 2 cell cycle RHPs, they found that the G2/M programs were consistent bet
 For the 10 non-cell cycle programs, the programs labeled 9 and 10 were the only ones identified *in vitro* that did not have a corresponding *in vivo* program, which the authors propose might be a lack of *in vivo* data (see pg 1210). The authors surmised that 7 of the 10 *in vitro* RHPs showed significant similarity to the *in vivo* RHPs (they cite Fig. 4a, see pg 1210). This was based on similarity between *in vivo* RHP data and *in vitro* RHP data, some RHPs which were previously defined and others which the authors derived from available scRNA-seq data on real tumors. Additional verification was done for many of the RHPs by performing scRNA-seq on samples containing both real tumor cells and cancer cell line cells, which often resulted in indistinguishable expression patterns.
 
 #### Where can you download the scRNA-seq data as shown in Figure 1B?
-See the "Data availability" section. They give two links, one of which is a "Study" on CCLE: https://singlecell.broadinstitute.org/single_cell/study/SCP542/pan-cancer-cell-line-heterogeneity.
+See the "Data availability" section. They give two links, one of which is a "Study" on CCLE: https://singlecell.broadinstitute.org/single_cell/study/SCP542/pan-cancer-cell-line-heterogeneity. The other is from GEO under accession GSE157220: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE157220
 
 ## Week 3: The Data
 
@@ -127,20 +127,50 @@ See the "Data availability" section. They give two links, one of which is a "Stu
     - https://freelearning.anaconda.cloud/get-started-with-anaconda
         - except I did not go with the Anaconda Navigator GUI, I used the link below
     - https://docs.anaconda.com/anaconda/install/linux/
-3. Downloaded data, see above "Where can you download the scRNA-seq data as shown in Figure 1B?"
-4. Followed Sanbomics guide to preprocessing and analyzing scRNA-seq data and skimming relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html):
-    - **see my folder on sanbomics tutorial for any notes**
-    - raw data processing: Chapters 1-5 of sc-best-practices may be **_prerequisite_** but not covered in video!
-    - pre-processing: Chapters 6-9 of sc-best-practices with [2024 scRNA-seq tutorial, part 1: Raw data processing](https://www.youtube.com/watch?v=cmOlCTGX4Ik) - like using CellBender to deal with technical covariates
-    - annotation then basic analysis: Chapters 10-12 of sc-best-practices with [2024 updated single-cell guide - Part 2: RNA Integration and annotation](https://www.youtube.com/watch?v=FqG_O12oWR4)
-    - PERHAPS LATER: [Complete single-cell RNAseq analysis walkthrough | Advanced introduction (2023 version)](https://www.youtube.com/watch?v=uvyG9yLuNSE)
-5. Created F1L emulator conda environment, activated then installed packages as specified in the file "./240703_kinker_explore.ipynb" by running the following commands in Bash shell:
+3. Downloaded data, see above "Where can you download the scRNA-seq data as shown in Figure 1B?" (**See old version below) In bash terminal type:
+```bash
+# note 1: click "Bulk Download" to generate this URL.
+# note 2: add the -k before "URL from website" if needed for certificate error as suggested
+# note 3: ".exe" and "if ($?) { rm cfg.txt } " are Windows powershell specific, I've adjusted the things necessary
+curl.exe -k "URL from website"  -o cfg.txt
+curl.exe -K cfg.txt
+if [ $? -eq 0 ]; then
+    rm cfg.txt
+fi
+```
+
+4. Forked [F1L GitHub](https://github.com/deanslee/FigureOneLab) repo to my Github, then cloned repo to my machine
+5. Based on imports in notebooks from Step 4, created F1L emulator conda environment, activated then installed packages as specified in the file "./240703_kinker_explore.ipynb" by running the following commands in Bash shell:
     ```bash
     conda create --name 2024-F1L
     conda install jupyter
     conda install -c conda-forge scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib
     ```
-6. 
+6. Followed tutorials on scRNA-seq (*hit some snares, see below, took two different tutorials). Process: Briefly look at table of contents and skim relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html), then get code running from step 4. For each part of the code, go back and read more closely to get details right.
+- raw data processing: Chapters 1-5
+- pre-processing: Chapters 6-9
+- annotation then basic analysis: Chapters 10-12
+
+7. To get the data into an AnnData object, I followed a different process than original notebook. DataFrames proved to be too slow for the counts matrix, so I stayed in numpy for that part of the code. Because the counts was made a dataframe in the original notebook, I had to adjust how to mask out invalid CellIDs (that aren't in the meta data but are in the UMI counts matrix) with some finagling of dataframe operations. Thought I completed notebook around 02JAN25. When I came back later, found the UMAP plot was incorrect - mixing of different cell types which suggests that my indexing got off. Corrected it 06-07JAN25. **Moral of story:** be very careful when indexing your single cell count data for AnnData
+
+8.
+
+
+*Original Step 5 was attempting process below. But, Sanbomics scripts kept hitting dependency issues and finally in the second video he mentions using the prepreprocessed AnnData, pp_adata, folder which we did not prepare in the first script. His process works well for him, but was unfortunately not very helpful to me. PROCESS: Followed Sanbomics guide to preprocessing and analyzing scRNA-seq data and skimming relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html):
+- see my folder on sanbomics tutorial for any note
+- raw data processing: Chapters 1-5 of sc-best-practices may be **_prerequisite_** but not covered in video!
+- pre-processing: Chapters 6-9 of sc-best-practices with [2024 scRNA-seq tutorial, part 1: Raw data processing](https://www.youtube.com/watch?v=cmOlCTGX4Ik) - like using CellBender to deal with technical covariates
+- annotation then basic analysis: Chapters 10-12 of sc-best-practices with [2024 updated single-cell guide - Part 2: RNA Integration and annotation](https://www.youtube.com/watch?v=FqG_O12oWR4)
+- PERHAPS LATER: [Complete single-cell RNAseq analysis walkthrough | Advanced introduction (2023 version)](https://www.youtube.com/watch?v=uvyG9yLuNSE)
+
+**Old step 3 code. Although using the CCLE link results in slightly different files than the original F1L notebook's call for, the GEO link is completely different as it gives the raw data, I think.
+```bash
+curl -o GSE157220_Pool_composition.xlsx "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE157nnn/GSE157220/suppl/GSE157220%5FPool%5Fcomposition.xlsx"; curl -o GSE157220_CPM_data.txt.gz "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE157nnn/GSE157220/suppl/GSE157220%5FCPM%5Fdata.txt.gz"
+
+sudo apt update && sudo apt install pv
+
+pv GSE157220_CPM_data.txt.gz | gunzip > GSE157220_CPM_data.txt
+```
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
