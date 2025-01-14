@@ -146,14 +146,25 @@ fi
     conda install jupyter
     conda install -c conda-forge scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib
     ```
-6. Followed tutorials on scRNA-seq (*hit some snares, see below, took two different tutorials). Process: Briefly look at table of contents and skim relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html), then get code running from step 4. For each part of the code, go back and read more closely to get details right.
-- raw data processing: Chapters 1-5
-- pre-processing: Chapters 6-9
-- annotation then basic analysis: Chapters 10-12
+6. Followed tutorials on scRNA-seq (*hit some snares, see below, took two different tutorials). This step: briefly look at table of contents and **skim** relevant chapters from [scbp](https://www.sc-best-practices.org/preamble.html)
+- scRNAseq intro: chapter 2
+- raw data processing: chapter 3
+- analysis frameworks: chapter 4
+- interoperability: chapter 5 (switching between R's biocounductor/seurat and Python's scanpy)
+- pre-processing and visualization: chapters 6-9
+- annotation then basic analysis: chapters 10-12
 
-7. To get the data into an AnnData object, I followed a different process than original notebook. DataFrames proved to be too slow for the counts matrix, so I stayed in numpy for that part of the code. Because the counts was made a dataframe in the original notebook, I had to adjust how to mask out invalid CellIDs (that aren't in the meta data but are in the UMI counts matrix) with some finagling of dataframe operations. Thought I completed notebook around 02JAN25. When I came back later, found the UMAP plot was incorrect - mixing of different cell types which suggests that my indexing got off. Corrected it 06-07JAN25. **Moral of story:** be very careful when indexing your single cell count data for AnnData
+7. (***) Reading scbp chapters 3-4, as I am working on 241101_kinker_anndata.ipynb and 250104_kinker_scanpy.ipynb
+- Did [AnnData getting started tutorial](https://anndata.readthedocs.io/en/latest/tutorials/notebooks/getting-started.html) (which is the same as [scbp 4.2 code along](https://www.sc-best-practices.org/introduction/analysis_tools.html#storing-unimodal-data-with-anndata))
+- Did [scbp 4.3 code along](https://www.sc-best-practices.org/introduction/analysis_tools.html#unimodal-data-analysis-with-scanpy)
+- Reviewed [10 min to pandas tutorial](https://pandas.pydata.org/docs/user_guide/10min.html#min) 
+- To get the data into an AnnData object, I followed a different process than original notebook. On my computer, DataFrames proved to be too slow for the counts matrix, so I stayed in numpy for that part of the code. Because the counts was made a dataframe in the original notebook, I had to adjust how to mask out invalid CellIDs (that aren't in the meta data but are in the UMI counts matrix) with some finagling of dataframe operations. 
+- Thought I completed notebook around 02JAN25. When I came back later, found the UMAP plot was incorrect (250104_kinker_scanpy.ipynb) - mixing of different cell types suggests my indexing got off. Corrected 06-07JAN25.
+- **Moral of story:** be very careful when indexing your single cell count data for AnnData
 
-8.
+
+8. (***) Reading chapters 6-9, as I am working on 250106_kinker_explore.ipynb.
+- [scbp 6.2 code along](https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html)
 
 
 *Original Step 5 was attempting process below. But, Sanbomics scripts kept hitting dependency issues and finally in the second video he mentions using the prepreprocessed AnnData, pp_adata, folder which we did not prepare in the first script. His process works well for him, but was unfortunately not very helpful to me. PROCESS: Followed Sanbomics guide to preprocessing and analyzing scRNA-seq data and skimming relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html):
@@ -171,6 +182,8 @@ sudo apt update && sudo apt install pv
 
 pv GSE157220_CPM_data.txt.gz | gunzip > GSE157220_CPM_data.txt
 ```
+
+*** Code alongs contained in my folder ~/2024-scbp-tutorials
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
