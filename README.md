@@ -128,23 +128,29 @@ See the "Data availability" section. They give two links, one of which is a "Stu
         - except I did not go with the Anaconda Navigator GUI, I used the link below
     - https://docs.anaconda.com/anaconda/install/linux/
 3. Downloaded data, see above "Where can you download the scRNA-seq data as shown in Figure 1B?" (**See old version below) In bash terminal type:
-```bash
-# note 1: click "Bulk Download" to generate this URL.
-# note 2: add the -k before "URL from website" if needed for certificate error as suggested
-# note 3: ".exe" and "if ($?) { rm cfg.txt } " are Windows powershell specific, I've adjusted the things necessary
-curl.exe -k "URL from website"  -o cfg.txt
-curl.exe -K cfg.txt
-if [ $? -eq 0 ]; then
-    rm cfg.txt
-fi
-```
+    ```bash
+    # note 1: click "Bulk Download" to generate this URL.
+    # note 2: add the -k before "URL from website" if needed for certificate error as suggested
+    # note 3: ".exe" and "if ($?) { rm cfg.txt } " are Windows powershell specific, I've adjusted the things necessary
+    curl.exe -k "URL from website"  -o cfg.txt
+    curl.exe -K cfg.txt
+    if [ $? -eq 0 ]; then
+        rm cfg.txt
+    fi
+    ```
 
 4. Forked [F1L GitHub](https://github.com/deanslee/FigureOneLab) repo to my Github, then cloned repo to my machine
-5. Based on imports in notebooks from Step 4, created F1L emulator conda environment, activated then installed packages as specified in the file "./240703_kinker_explore.ipynb" by running the following commands in Bash shell:
+5. (****) Based on imports in notebooks from Step 4 (and [scbp 5 interoperability](https://www.sc-best-practices.org/introduction/interoperability.html)), created F1L emulator conda environment, activated then installed packages as specified in the file "./240703_kinker_explore.ipynb" by running the following commands in Bash shell:
     ```bash
     conda create --name 2024-F1L
-    conda install jupyter
-    conda install -c conda-forge scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib
+    conda activate 2024-F1L
+    conda install -y -c conda-forge -c bioconda -c anaconda mamba
+
+    # mamba speeds up installation and  conflict dependency
+    mamba install scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib rpy2 r-soupx jupyterlab # lab instead of regular jupytery
+
+    # but mamba doesn't have anndata2ri, so install via normal conda 
+    conda install -y bioconda::anndata2ri
     ```
 6. Followed tutorials on scRNA-seq (*hit some snares, see below, took two different tutorials). This step: briefly look at table of contents and **skim** relevant chapters from [scbp](https://www.sc-best-practices.org/preamble.html)
 - scRNAseq intro: chapter 2
@@ -164,7 +170,8 @@ fi
 
 
 8. (***) Reading chapters 6-9, as I am working on 250106_kinker_explore.ipynb.
-- [scbp 6.2 code along](https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html)
+- [scbp 6 code along](https://www.sc-best-practices.org/preprocessing_visualization/quality_control.html)
+    - 6.4 ISSUE, `ValueError: Not an rpy2 R object and unable to map it to one: np.str_('value')` see notebook containing code alongs. The conclusion I have come to is to switch to disk-based interoperability ([scbp ch 5.3](https://www.sc-best-practices.org/introduction/interoperability.html#disk-based-interoperability)) rather than in-memory interoperability ([scbp ch 5.4](https://www.sc-best-practices.org/introduction/interoperability.html#in-memory-interoperability))
 
 
 *Original Step 5 was attempting process below. But, Sanbomics scripts kept hitting dependency issues and finally in the second video he mentions using the prepreprocessed AnnData, pp_adata, folder which we did not prepare in the first script. His process works well for him, but was unfortunately not very helpful to me. PROCESS: Followed Sanbomics guide to preprocessing and analyzing scRNA-seq data and skimming relevant chapters from [sc-best-practices](https://www.sc-best-practices.org/preamble.html):
@@ -184,6 +191,14 @@ pv GSE157220_CPM_data.txt.gz | gunzip > GSE157220_CPM_data.txt
 ```
 
 *** Code alongs contained in my folder ~/2024-scbp-tutorials
+
+**** Old step 5 code, had dependency issues so switched to using mamba as much as I could
+```bash
+conda create --name 2024-F1L
+conda activate 2024-F1L
+conda install -y -c conda-forge scanpy python-igraph leidenalg anndata pandas numpy scipy seaborn matplotlib rpy2 r-soupx -c bioconda anndata2ri -c anaconda jupyter
+```
+
 
 ## References
 Bevacizumab [Package Insert]. (2022, September 18). Genentech. https://www.accessdata.fda.gov/drugsatfda_docs/label/2022/125085s340lbl.pdf
